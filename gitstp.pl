@@ -200,8 +200,8 @@ sub settstpdir($) {
         $maxtime = $t if $t>$maxtime;
     }
     close($dir);
-    print STDERR "Setting directory time: $maxtime $path\n" if $flDebug;
-    utime($maxtime, $maxtime, $path);
+    print STDERR "Setting directory time: $maxtime $path\n" if $flDebug and $maxtime;
+    utime($maxtime, $maxtime, $path) if $maxtime;
     return $maxtime;
 }
 sub dirlist($) {
